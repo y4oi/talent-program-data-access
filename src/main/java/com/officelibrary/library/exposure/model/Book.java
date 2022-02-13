@@ -3,17 +3,30 @@ package com.officelibrary.library.exposure.model;
 import java.util.List;
 import java.util.Objects;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table
 public class Book {
 
     @Id
-    private String uniqueID;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(nullable = false)
+    private int uniqueID;
     private String title;
     private String description;
     private List<Author> authors;
 
     private Category category;
+
+    public Book() {
+
+    }
 
     public Book(String title, String description, List<Author> authors, Category category) {
         this.title = title;
@@ -22,11 +35,11 @@ public class Book {
         this.category = category;
     }
 
-    public String getUniqueID() {
+    public int getUniqueID() {
         return uniqueID;
     }
 
-    public void setUniqueID(String uniqueID) {
+    public void setUniqueID(int uniqueID) {
         this.uniqueID = uniqueID;
     }
 

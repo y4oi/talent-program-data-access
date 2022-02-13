@@ -6,7 +6,6 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -14,10 +13,10 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
-import com.officelibrary.library.exposure.controller.BookController;
+import com.officelibrary.library.exposure.spring.data.controller.BookController;
 import com.officelibrary.library.exposure.model.Book;
 import com.officelibrary.library.exposure.model.Category;
-import com.officelibrary.library.exposure.service.BookService;
+import com.officelibrary.library.exposure.spring.data.service.BookService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;

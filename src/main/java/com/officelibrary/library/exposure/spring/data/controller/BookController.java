@@ -1,9 +1,9 @@
-package com.officelibrary.library.exposure.controller;
+package com.officelibrary.library.exposure.spring.data.controller;
 
 import java.util.List;
 
 import com.officelibrary.library.exposure.model.Book;
-import com.officelibrary.library.exposure.service.BookService;
+import com.officelibrary.library.exposure.spring.data.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -40,12 +40,12 @@ public class BookController {
     }
 
     @GetMapping("/booksNoCheck/{id}")
-    public Book getBookNoCheck(@PathVariable("id") String id) {
+    public Book getBookNoCheck(@PathVariable("id") int id) {
         return bookService.getBookById(id).get();
     }
 
     @GetMapping("/books/{id}")
-    public ResponseEntity<Book> getBookById(@PathVariable("id") String id) {
+    public ResponseEntity<Book> getBookById(@PathVariable("id") int id) {
         return bookService.getBookById(id).isPresent() ?
             new ResponseEntity<>(bookService.getBookById(id).get(), HttpStatus.OK) : new ResponseEntity<>(null, HttpStatus.NOT_FOUND);
     }
@@ -56,7 +56,7 @@ public class BookController {
     }
 
     @DeleteMapping("/books/{id}")
-    public void deleteBook(@PathVariable("id") String id) {
+    public void deleteBook(@PathVariable("id") int id) {
         bookService.deleteBookById(id);
     }
 
@@ -71,7 +71,7 @@ public class BookController {
     }
 
     @PutMapping("/books/{id}")
-    public ResponseEntity<Book> updateBook(@PathVariable("id") String id, @RequestBody Book book) {
+    public ResponseEntity<Book> updateBook(@PathVariable("id") int id, @RequestBody Book book) {
         try {
             bookService.updateBook(id, book);
             return new ResponseEntity<>(book, HttpStatus.OK);

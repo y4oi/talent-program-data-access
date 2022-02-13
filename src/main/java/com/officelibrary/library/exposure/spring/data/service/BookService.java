@@ -1,11 +1,11 @@
-package com.officelibrary.library.exposure.service;
+package com.officelibrary.library.exposure.spring.data.service;
 
 import java.util.List;
 import java.util.Optional;
 
 import com.officelibrary.library.exposure.model.Book;
-import com.officelibrary.library.exposure.repository.BookRepository;
-import com.officelibrary.library.exposure.repository.CategoryRepository;
+import com.officelibrary.library.exposure.spring.data.repository.BookRepository;
+import com.officelibrary.library.exposure.spring.data.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.ApplicationScope;
@@ -37,7 +37,7 @@ public class BookService {
         return Optional.ofNullable(bookRepository.findAllByTitle(title));
     }
 
-    public Optional<Book> getBookById(String id) {
+    public Optional<Book> getBookById(int id) {
         return bookRepository.findById(id);
     }
 
@@ -45,17 +45,13 @@ public class BookService {
         bookRepository.delete(book);
     }
 
-    public void deleteBookById(String id) {
+    public void deleteBookById(int id) {
         Optional<Book> book = getBookById(id);
         book.ifPresent(book1 -> bookRepository.delete(book1));
     }
 
-    public void updateBook(String id, Book newBook) {
+    public void updateBook(int id, Book newBook) {
         Optional<Book> bookOptional = getBookById(id);
-        bookOptional.ifPresent(book -> {
-            categoryRepository.save(newBook.getCategory());
-            book.updateFields(newBook);
-            bookRepository.save(book);
-        });
+        bookOptional.ifPresent(book -> bookRepository.save(book));
     }
 }

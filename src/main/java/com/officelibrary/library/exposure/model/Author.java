@@ -1,25 +1,38 @@
 package com.officelibrary.library.exposure.model;
 
 import java.util.Objects;
-import java.util.UUID;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "AUTHOR")
 public class Author {
 
-    private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "ACCID", nullable = false)
+    private int id;
     private String name;
     private String surname;
 
+    public Author() {
+    }
+
     public Author(String name, String surname) {
-        this.id = UUID.randomUUID().toString().replace("-", "");
         this.name = name;
         this.surname = surname;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
