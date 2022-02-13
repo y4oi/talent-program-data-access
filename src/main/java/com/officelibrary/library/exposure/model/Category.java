@@ -1,7 +1,7 @@
 package com.officelibrary.library.exposure.model;
 
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,13 +22,13 @@ public class Category {
     private String name;
 
     @OneToMany(mappedBy = "category")
-    private List<Book> books;
+    private Set<Book> books;
 
     public Category(String name) {
         this.name = name;
     }
 
-    public Category(String name, List<Book> books) {
+    public Category(String name, Set<Book> books) {
         this.name = name;
         this.books = books;
     }
@@ -53,11 +53,11 @@ public class Category {
         this.name = name;
     }
 
-    public List<Book> getBooks() {
+    public Set<Book> getBooks() {
         return books;
     }
 
-    public void setBooks(List<Book> books) {
+    public void setBooks(Set<Book> books) {
         this.books = books;
     }
 

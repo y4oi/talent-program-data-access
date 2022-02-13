@@ -1,8 +1,9 @@
 package com.officelibrary.library.exposure.model;
 
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +23,11 @@ public class Author {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ACCID", nullable = false)
     private int id;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "ACCOUNT_ID")
+    private Account account;
+
     private String name;
     private String surname;
 
@@ -30,7 +37,7 @@ public class Author {
         joinColumns = @JoinColumn(name = "AUTHOR_ID"),
         inverseJoinColumns = @JoinColumn(name = "BOOK_ID")
     )
-    private List<Book> authors;
+    private Set<Book> books;
 
     public Author() {
     }
