@@ -25,33 +25,30 @@ public class BookService {
     }
 
     public Book addBook(Book book) {
-        categoryRepository.save(book.getCategory());
-        return bookRepository.save(book);
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     public List<Book> getBooks() {
-        return bookRepository.findAll();
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     public Optional<List<Book>> getBookByTitle(String title) {
-        return Optional.ofNullable(bookRepository.findAllByTitle(title));
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     public Optional<Book> getBookById(int id) {
-        return bookRepository.findById(id);
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     public void deleteBook(Book book) {
-        bookRepository.delete(book);
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     public void deleteBookById(int id) {
-        Optional<Book> book = getBookById(id);
-        book.ifPresent(book1 -> bookRepository.delete(book1));
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 
     public void updateBook(int id, Book newBook) {
-        Optional<Book> bookOptional = getBookById(id);
-        bookOptional.ifPresent(book -> bookRepository.save(book));
+        throw new UnsupportedOperationException("Not yet implemented");
     }
 }
