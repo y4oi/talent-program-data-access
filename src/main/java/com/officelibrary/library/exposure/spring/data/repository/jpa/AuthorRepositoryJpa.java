@@ -7,17 +7,17 @@ import com.officelibrary.library.exposure.spring.data.repository.AuthorRepositor
 
 public class AuthorRepositoryJpa implements AuthorRepository {
     @Override
-    public List<Author> findByNameAndSurName(String name, String surname) {
+    public List<Author> findByNameAndSurname(String name, String surname) {
         return null;
     }
 
     @Override
-    public List<Author> findByLastNameNotLike(String lastName) {
+    public List<Author> findBySurnameNotLike(String surname) {
         return null;
     }
 
     @Override
-    public List<Author> findNamesLongerThan(Integer minNameLength) {
+    public List<Author> findByNamesLongerThan(Integer minNameLength) {
         return null;
     }
 }

@@ -6,10 +6,10 @@ import com.officelibrary.library.exposure.model.Author;
 
 public interface AuthorRepository {
 
-    public List<Author> findByNameAndSurName(String name, String surname);
+    public List<Author> findByNameAndSurname(String name, String surname);
 
-    public List<Author> findByLastNameNotLike(String lastName);
+    public List<Author> findBySurnameNotLike(String surname);
 
-    public List<Author> findNamesLongerThan(Integer minNameLength);
+    public List<Author> findByNamesLongerThan(Integer minNameLength);
 
 }
