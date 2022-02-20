@@ -4,8 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.officelibrary.library.exposure.model.Book;
-import com.officelibrary.library.exposure.spring.data.repository.BookRepository;
-import com.officelibrary.library.exposure.spring.data.repository.CategoryRepository;
+import com.officelibrary.library.exposure.spring.data.repository.springdata.BookRepositorySpringData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.ApplicationScope;
@@ -14,18 +13,16 @@ import org.springframework.web.context.annotation.ApplicationScope;
 @ApplicationScope
 public class BookService {
 
-    private BookRepository bookRepository;
+    private BookRepositorySpringData bookRepository;
 
-    private CategoryRepository categoryRepository;
 
     @Autowired
-    public BookService(BookRepository bookRepository, CategoryRepository categoryRepository) {
+    public BookService(BookRepositorySpringData bookRepository) {
         this.bookRepository = bookRepository;
-        this.categoryRepository = categoryRepository;
     }
 
     public Book addBook(Book book) {
-        throw new UnsupportedOperationException("Not yet implemented");
+        return bookRepository.save(book);
     }
 
     public List<Book> getBooks() {

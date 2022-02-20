@@ -38,7 +38,11 @@ public class Book {
     private Category category;
 
     public Book() {
+    }
 
+    public Book(String title, String description) {
+        this.title = title;
+        this.description = description;
     }
 
     public Book(String title, String description, List<Author> authors, Category category) {
