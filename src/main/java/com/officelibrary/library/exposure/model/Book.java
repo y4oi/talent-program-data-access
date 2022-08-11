@@ -1,7 +1,7 @@
 package com.officelibrary.library.exposure.model;
 
-import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -25,13 +24,8 @@ public class Book {
     private String title;
     private String description;
 
-    @ManyToMany
-    @JoinTable(
-        name = "BOOK_AUTHOR",
-        joinColumns = @JoinColumn(name = "BOOK_ID"),
-        inverseJoinColumns = @JoinColumn(name = "AUTHOR_ID")
-    )
-    private List<Author> authors;
+    @ManyToMany(mappedBy = "books")
+    private Set<Author> authors;
 
     @ManyToOne
     @JoinColumn(name = "CATEGORY_ID")
@@ -41,7 +35,7 @@ public class Book {
 
     }
 
-    public Book(String title, String description, List<Author> authors, Category category) {
+    public Book(String title, String description, Set<Author> authors, Category category) {
         this.title = title;
         this.description = description;
         this.authors = authors;
@@ -72,11 +66,11 @@ public class Book {
         this.description = description;
     }
 
-    public List<Author> getAuthors() {
+    public Set<Author> getAuthors() {
         return authors;
     }
 
-    public void setAuthors(List<Author> authors) {
+    public void setAuthors(Set<Author> authors) {
         this.authors = authors;
     }
 
