@@ -23,17 +23,17 @@ public class AuthorController {
 
     @GetMapping("/authors/findByNameAndSurname")
     public List<Author> findByNameAndSurname(@RequestParam(value = "name") String name, @RequestParam(value = "surname") String surname) {
-        throw new UnsupportedOperationException();
+        return authorService.findByNameAndSurname(name, surname);
     }
 
     @GetMapping("/authors/findBySurnameNotLike")
     public List<Author> findBySurnameNotLike(@RequestParam(value = "surname") String surname) {
-        throw new UnsupportedOperationException();
+        return authorService.findBySurnameNotLike(surname);
     }
 
     @GetMapping("/authors/findByNamesLongerThan")
-    public List<Author> findBySurnameNotLike(@RequestParam(value = "minNameLength") Integer minNameLength) {
-        throw new UnsupportedOperationException();
+    public List<Author> findByNamesLongerThan(@RequestParam(value = "minNameLength") Integer minNameLength) {
+        return authorService.findByNamesLongerThan(minNameLength);
     }
 
 }
